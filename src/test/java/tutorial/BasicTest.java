@@ -17,16 +17,13 @@ public class BasicTest {
 		//when - Submit the API -resource,http method
 		//Then - validate the response
 		RestAssured.baseURI= "https://rahulshettyacademy.com";
-		String response=given().log().all().queryParam("key", "qaclick123").header("Content-Type","application/json")
+		String response=given().queryParam("key", "qaclick123").header("Content-Type","application/json")
 		.body(payload.AddPlace()).when().post("maps/api/place/add/json")
 		.then().assertThat().statusCode(200).body("scope", equalTo("APP"))
 		.header("server", "Apache/2.4.18 (Ubuntu)").extract().response().asString();
 		
-		System.out.println(response);
 		JsonPath js=new JsonPath(response); //for parsing Json
 		String placeId=js.getString("place_id");
-		
-		System.out.println(placeId);
 		
 		//Update Place
 		String newAddress = "Summer Walk, Africa";
@@ -45,12 +42,10 @@ public class BasicTest {
 	String getPlaceResponse=	given().log().all().queryParam("key", "qaclick123")
 		.queryParam("place_id",placeId)
 		.when().get("maps/api/place/get/json")
-		.then().assertThat().log().all().statusCode(200).extract().response().asString();
+		.then().assertThat().statusCode(200).extract().response().asString();
 	JsonPath js1= ReusableMethods.rawToJson(getPlaceResponse);
 	String actualAddress =js1.getString("address");
-	System.out.println(actualAddress);
 	assertEquals(actualAddress, "Pacific ocean");
-	//Cucumber Junit, Testng
 	
 	
 	
