@@ -12,9 +12,16 @@ public class ComplexJson  {
 		JsonPath js=new JsonPath(payload.CoursePrice()); 
 		assertEquals(js.getInt("courses.size()"),4);
 		
-		
+	}
 	
+	@Test
+	public void shouldDeliveePurchaseAmount() {
+		
+		JsonPath js=new JsonPath(payload.CoursePrice()); 
+		assertEquals(js.getInt("dashboard.purchaseAmount"),1162);
 		
 	}
+	
+	
 
 }
