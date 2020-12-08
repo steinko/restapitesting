@@ -5,9 +5,11 @@ import io.restassured.path.json.JsonPath;
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
 
 public class BasicTest {
 
+	@Test
 	public void shouldManagePlace () {
 		// TODO Auto-generated method stub
 // validate if Add Place API is workimg as expected 
@@ -45,7 +47,7 @@ public class BasicTest {
 		.then().assertThat().statusCode(200).extract().response().asString();
 	JsonPath js1= ReusableMethods.rawToJson(getPlaceResponse);
 	String actualAddress =js1.getString("address");
-	assertEquals(actualAddress, "Pacific ocean");
+	assertEquals(actualAddress, newAddress);
 	
 	
 	
