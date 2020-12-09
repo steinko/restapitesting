@@ -44,7 +44,7 @@ public class ComplexJson  {
 	}
 	
 	@Test
-	public void shouldVerifyPurcaeAmontIntegrity() {
+	public void shouldVerifyPurchaseAmountIntegrity() {
 		int i;
 		int soldAmount= 0;
 		for ( i=0; i< js.getInt("courses.size"); i++)
