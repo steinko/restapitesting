@@ -43,4 +43,20 @@ public class ComplexJson  {
 		}
 	}
 	
+	@Test
+	public void shouldVerifyPurcaeAmontIntegrity() {
+		int i;
+		int soldAmount= 0;
+		for ( i=0; i< js.getInt("courses.size"); i++)
+		{
+			int copies = js.getInt("courses[" + i + "].copies");
+			int price = js.getInt("courses[" + i + "].price");
+			int amount = copies*price; 
+			soldAmount = soldAmount + amount;
+			
+		}
+		assertEquals(soldAmount, js.getInt("dashboard.purchaseAmount"));
+	}
+	
+	
 }
