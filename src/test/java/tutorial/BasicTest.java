@@ -41,7 +41,7 @@ public class BasicTest {
 		
 		//Get Place
 		
-	String getPlaceResponse=	given().log().all().queryParam("key", "qaclick123")
+	String getPlaceResponse=	given().queryParam("key", "qaclick123")
 		.queryParam("place_id",placeId)
 		.when().get("maps/api/place/get/json")
 		.then().assertThat().statusCode(200).extract().response().asString();

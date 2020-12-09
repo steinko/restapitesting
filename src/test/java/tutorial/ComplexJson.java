@@ -31,5 +31,16 @@ public class ComplexJson  {
 	}
 	
 	
-
+	@Test
+	public void shouldDeliverNumberOfCopiesSold() {
+		int i;
+		for ( i=0; i< js.getInt("courses.size"); i++)
+		{
+			
+			if (js.getString("courses[" + i+ "].title") == "RPA") {
+				assertEquals(js.getInt("courses[" + i + "].copies"),10);
+		    }
+		}
+	}
+	
 }
