@@ -65,6 +65,22 @@ public class JiraTest {
 	  .then()
 	     .assertThat()
 		    .statusCode(201);
+	   
+	   
+	   //Get Issue
+	   
+	   given()
+	      .pathParam("key", "COOL-1")
+	      .header("Content-Type", "application/json")
+	      .filter(session)
+	  .when().
+		 get("/rest/api/2/issue/{key}")
+	  .then()
+	     .assertThat()
+		    .statusCode(200);
+	   
+	   
+	   
 					    
 					
 	   
